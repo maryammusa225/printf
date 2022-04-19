@@ -1,28 +1,34 @@
-#ifndef _MAIN_H_
-#define _MAIN_H_
+#ifndef _MAIN_
+#define _MAIN_
 
-#include <stdarg.h>
 #include <unistd.h>
-#include <stdlib.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <limits.h>
 
 /**
- * struct handler - Struct handler
- *
- * @spec - Given string
- * @f - handler function
- */
-typedef struct handl
+* struct op - flag / function object
+* @c: flag
+* @f: function
+*/
+
+typedef struct op
 {
-	char *specifier;
-	int (*f)(va_list, char *, unsigned int);
-} handl_t;
+	char *c;
+	int (*f)(va_list);
+} op_t;
 
 int _printf(const char *format, ...);
-int (*get_handl_func(const char *, int))(va_list, char *, unsigned int);
-int print_buf(char *, unsigned int);
-unsigned int handl_buf(char *, char, unsigned int);
-int handl_ch(va_list, char *, unsigned int);
-int handl_str(va_list, char *, unsigned int);
-int handl_int(va_list, char *, unsigned int);
+int _putchar(char c);
+int print_c(va_list ar_list);
+int (*get_func(char s))(va_list ar_list);
+int print_s(va_list ar_list);
+int print_d(va_list ar_list);
+int print_i(va_list ar_numlist);
+int print_b(va_list binary_list);
+int print_u(va_list ar_list);
+int print_o(va_list ar_list);
+int print_x(va_list ar_list);
+int print_X(va_list ar_list);
 
-#endif /* _MAIN_H_ */
+#endif
